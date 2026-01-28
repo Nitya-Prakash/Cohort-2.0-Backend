@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 function connectToDb() {
   mongoose
     .connect(
-      "mongodb+srv://prakashnitya07_db_user:F4k2qkrZIL03JhS4@cluster0.1tuewkm.mongodb.net/Day-6",
+      "mongodb+srv://prakashnitya07_db_user:F4k2qkrZIL03J@cluster0.1tuewkm.mongodb.net/Day-6",
     )
     .then(() => {
       console.log("Connected to Database!");
