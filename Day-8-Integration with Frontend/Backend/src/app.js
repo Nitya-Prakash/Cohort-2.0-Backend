@@ -1,10 +1,12 @@
 const express = require("express");
 const noteModel = require("./models/note.model");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static("./public")); // Iss line mein express hamara public folder mein jo jo bhi files hain unko publically available kar de raha hai, so job koi api, js or css file ko access karna chahega tab wo access kar sakta hai. Issiliye ham ab ek hi url mein dono frontend and backend ko access kar sakte hai, ab hamein dono folder ko different different run karna nahi padega.
 
 app.post("/api/notes", async (req, res) => {
   const { title, description } = req.body;
@@ -51,5 +53,13 @@ app.delete("/api/notes/:id", async (req, res) => {
     message: "Note deleted successfully !",
   });
 });
+
+// console.log(__dirname);
+
+app.use("*name", (req, res) => {
+  // res.sendFile("../public/index.html");
+  res.sendFile(path.join(__dirname, "..", "/public/index.html"));
+  // res.send("This is wild card");
+}); // If user throw a requet on an invalid api, then it will handle in this middleware
 
 module.exports = app;
