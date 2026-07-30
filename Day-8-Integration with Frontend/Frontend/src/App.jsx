@@ -20,7 +20,7 @@ const App = () => {
   // Jab bhi aap ek state variable ko change karte ho, then wo state variable jis component mein hoga wo component baar baar rerender hota hai. So the solution is "useEffect";
 
   function fetchNotes() {
-    axios.get("http://localhost:3000/api/notes").then((res) => {
+    axios.get("https://cohort-2-0-backend-2.onrender.com/api/notes").then((res) => {
       setNotes(res.data.notes)
     })
   }
@@ -32,7 +32,7 @@ const App = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    axios.post("http://localhost:3000/api/notes", {
+    axios.post("https://cohort-2-0-backend-2.onrender.com/api/notes", {
       title,
       description
     }).then((res) => {
@@ -45,7 +45,7 @@ const App = () => {
   }
 
   function handleDelete(id) {
-    axios.delete(`http://localhost:3000/api/notes/` + id).then((res) => {
+    axios.delete(`https://cohort-2-0-backend-2.onrender.com/api/notes/` + id).then((res) => {
       console.log(res.data)
       fetchNotes()
     })
@@ -63,7 +63,7 @@ const App = () => {
   function handleUpdate(e) {
     e.preventDefault();
 
-    axios.patch(`http://localhost:3000/api/notes/${noteId}`, {
+    axios.patch(`https://cohort-2-0-backend-2.onrender.com/api/notes/${noteId}`, {
       title,
       description
     }).then((res) => {
